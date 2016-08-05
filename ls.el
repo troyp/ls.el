@@ -4,7 +4,7 @@
 
 ;; Author: Troy Pracy
 ;; Keywords: list functional
-;; Version: 0.0.3
+;; Version: 0.0.4
 ;; Package-Requires: ((emacs "24") (dash "2.12.1") (dash-functional "1.2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -121,6 +121,26 @@ Examples:
   (ls-cons-if-t nil 3)
   ;; 3"
   (if car (cons car cdr) cdr))
+
+(defun ls-zero-when (pred list)
+  "Replace items where PRED yields t by zero in LIST.
+
+Example:
+
+  (ls-zero-when (fn (zerop (mod _ 3))) (ls-range from 1 to 10))
+  ;; (nil nil 3 nil nil 6 nil nil 9 nil)"
+  (--map (when (funcall pred it) it) list))
+
+(defun ls-zero-unless (pred list)
+  "Replace items where PRED yields nil by zero in LIST.
+
+Example:
+
+  (ls-zero-unless (fn (zerop (mod _ 3))) (ls-range from 1 to 10))
+  ;; (1 2 nil 4 5 nil 7 8 nil 10)"
+  (--map (unless (funcall pred it) it) list))
+
+
 
 
 ;; ,----------,

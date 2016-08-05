@@ -34,6 +34,8 @@ __suffixes__, repectively, in this API.
 
 ### List modification.
 * [ls-cons-if-t](#ls-cons-if-t-car-cdr) `(car cdr)`
+* [ls-zero-when](#ls-zero-when-pred-list) `(pred list)`
+* [ls-zero-unless](#ls-zero-unless-pred-list) `(pred list)`
 
 ### Sublists.
 * [ls-take-before-elt](#ls-take-before-elt-target-list) `(target-list)`
@@ -125,6 +127,18 @@ Create a new cons if CAR is non-nil, else return CDR.
     ;; (2 . 3)
     (ls-cons-if-t nil 3)
     ;; 3
+
+### ls-zero-when `(pred list)`
+Replace items where PRED yields t by zero in LIST.
+
+    (ls-zero-when (fn (zerop (mod _ 3))) (ls-range from 1 to 10))
+    ;; (nil nil 3 nil nil 6 nil nil 9 nil)"
+
+### ls-zero-unless `(pred list)`
+Replace items where PRED yields nil by zero in LIST.
+
+    (ls-zero-unless (fn (zerop (mod _ 3))) (ls-range from 1 to 10))
+    ;; (1 2 nil 4 5 nil 7 8 nil 10)
 
 ------------------------------------------------------------
 
