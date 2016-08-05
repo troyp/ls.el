@@ -45,6 +45,9 @@ __suffixes__, repectively, in this API.
 * [ls-take-until](#ls-take-until-pred-list)
 * [ls-drop-until](#ls-drop-until-pred-list)
 
+### Miscellaneous.
+* [ls-uncons](#ls-uncons-list)
+
 ------------------------------------------------------------
 
 ### List creation: ranges, list comprehensions, etc.
@@ -163,6 +166,11 @@ Return `t` if OBJECT is a proper list.
 Return `t` if OBJECT is an improper list.
 
 ------------------------------------------------------------
+
+### Miscellaneous.
+
+#### ls-uncons `(list)`
+Decompose LIST into `car` and `cdr`. If LIST is `nil`, return `nil`.
 
 ## TODO
 

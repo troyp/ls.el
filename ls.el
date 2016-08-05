@@ -185,6 +185,18 @@ See `ls-improper?'."
        (ls-improper? object)))
 
 
+;; ,---------------,
+;; | Miscellaneous |
+;; '---------------'
+
+(defun ls-uncons (list)
+  "Decompose LIST into `car' and `cdr'.
+
+If LIST is nil, return nil."
+  (list (car list) (cdr list)))
+
+
+
 (provide 'ls)
 
 ;;; ls ends here
