@@ -13,9 +13,9 @@ concision, readability and consistent naming conventions.
 
 ## Installation
 
-Place `fn.el` in any directory on your `load-path` and:
+Place `ls.el` in any directory on your `load-path` and:
 
-    (require 'fn)
+    (require 'ls)
 
 ------------------------------------------------------------
 
