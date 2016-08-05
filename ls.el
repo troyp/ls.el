@@ -27,6 +27,9 @@
 
 ;;; Code:
 
+(require 'cl-macs)
+(require 'dash)
+
 
 
 ;; ,---------------,
