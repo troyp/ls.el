@@ -1,5 +1,4 @@
-
-;;; ls.el --- List functions and utilities for Emacs
+;;; ls.el --- List functions and utilities for Emacs   -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2016 Troy Pracy
 
@@ -28,7 +27,7 @@
 ;;; Code:
 
 (require 'cl-macs)
-(require 'dash)
+(require 'dash-functional)
 
 
 
@@ -150,17 +149,17 @@ Examples:
   (cdr (memql target list)))
 
 (defun ls-take-until (pred list)
-  "Return the prefix ending prior to the first argument for which PRED holds.
+  "Return a prefix of items failing PRED from LIST.
 
   Note that `ls-take-until' and `ls-drop-until' partition a list into two parts
   (the prefix before PRED first holds, and the rest)."
   (-take-while (-not pred) list))
 
 (defun ls-drop-until (pred list)
-  "Return the suffix starting with the first argument for which PRED fails.
+  "Return a suffix of items failing PRED from LIST.
 
-Note that `ls-take-until' and `ls-drop-until' partition a list into two parts
-(the prefix before PRED first holds, and the rest)."
+Note that `ls-take-until' and `ls-drop-until' partition a list into two parts.
+\(the prefix before PRED first holds, and the rest)."
   (-drop-while (-not pred) list))
 
 
