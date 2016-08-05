@@ -36,17 +36,18 @@ __suffixes__, repectively, in this API.
 * [ls-take-to-elt](#ls-take-to-elt-target-list) `(target list)`
 * [ls-drop-before-elt](#ls-drop-before-elt-target-list) `(target list)`
 * [ls-drop-to-elt](#ls-drop-to-elt-target-list) `(target list)`
+* [ls-take-until](#ls-take-until-pred-list) `(pred list)`
+* [ls-drop-until](#ls-drop-until-pred-list) `(pred list)`
 
 ### Predicates.
 * [ls-proper?](#ls-proper?-list) `(list)`
 * [ls-improper?](#ls-improper?-list) `(list)`
 * [ls-proper-list?](#ls-proper-list?-object) `(object)`
 * [ls-improper-list?](#ls-improper-list?-object) `(object)`
-* [ls-take-until](#ls-take-until-pred-list)
-* [ls-drop-until](#ls-drop-until-pred-list)
+* [ls-sublist?](#ls-sublist?-sub-list) `(sub list)`
 
 ### Miscellaneous.
-* [ls-uncons](#ls-uncons-list)
+* [ls-uncons](#ls-uncons-list) `(list)`
 
 ------------------------------------------------------------
 
@@ -164,6 +165,9 @@ Return `t` if OBJECT is a proper list.
 
 #### fn-proper-list? `(object)`
 Return `t` if OBJECT is an improper list.
+
+#### ls-sublist? `(sub list)`
+Return `t` if SUB is a contiguous sublist of LIST.
 
 ------------------------------------------------------------
 

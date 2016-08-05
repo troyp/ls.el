@@ -5,7 +5,7 @@
 
 ;; Author: Troy Pracy
 ;; Keywords: list functional
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Package-Requires: ((emacs "24") (dash "2.12.1") (dash-functional "1.2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -183,6 +183,20 @@ See `ls-proper?'."
 See `ls-improper?'."
   (and (listp      object)
        (ls-improper? object)))
+
+(defun ls-sublist? (sub list)
+  "Return t if SUB is a contiguous sublist of LIST."
+  (let ((n (length sub)))
+    (cl-labels
+        ((---sublist-n?
+          (sub list)
+          (let ((suffix (memq (car sub) list)))
+            (cond ((equal sub
+                          (-take n suffix))   t)
+                  ((null list)                nil)
+                  (:otherwise  (---sublist-n? sub (cdr suffix)))))))
+      (---sublist-n? sub list))))
+
 
 
 ;; ,---------------,
