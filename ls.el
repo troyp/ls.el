@@ -5,7 +5,7 @@
 
 ;; Author: Troy Pracy
 ;; Keywords: list functional
-;; Version: 0.0.2
+;; Version: 0.0.3
 ;; Package-Requires: ((emacs "24") (dash "2.12.1") (dash-functional "1.2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -82,6 +82,23 @@ Examples:
   (declare (indent 0)
            (debug body))
   `(cl-loop for i ,@clauses collect i))
+
+
+
+;; ,-------------,
+;; | List Access |
+;; '-------------'
+
+(defun ls-uncons (list)
+  "Decompose LIST into `car' and `cdr'.
+
+If LIST is nil, return nil."
+  (list (car list) (cdr list)))
+
+(defun ls-last (list)
+  "Return the last element of LIST."
+  (car (last list)))
+
 
 
 ;; ,-------------------,
@@ -196,18 +213,6 @@ See `ls-improper?'."
                   ((null list)                nil)
                   (:otherwise  (---sublist-n? sub (cdr suffix)))))))
       (---sublist-n? sub list))))
-
-
-
-;; ,---------------,
-;; | Miscellaneous |
-;; '---------------'
-
-(defun ls-uncons (list)
-  "Decompose LIST into `car' and `cdr'.
-
-If LIST is nil, return nil."
-  (list (car list) (cdr list)))
 
 
 

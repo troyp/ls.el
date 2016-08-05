@@ -28,6 +28,10 @@ __suffixes__, repectively, in this API.
 ### List creation: ranges, list comprehensions, etc.
 * [ls-range](#ls-range-rest-clauses) `(&rest clauses)`
 
+### List access.
+* [ls-uncons](#ls-uncons-list) `(list)`
+* [ls-last](#ls-last-list) `(list)`
+
 ### List modification.
 * [ls-cons-if-t](#ls-cons-if-t-car-cdr) `(car cdr)`
 
@@ -45,9 +49,6 @@ __suffixes__, repectively, in this API.
 * [ls-proper-list?](#ls-proper-list?-object) `(object)`
 * [ls-improper-list?](#ls-improper-list?-object) `(object)`
 * [ls-sublist?](#ls-sublist?-sub-list) `(sub list)`
-
-### Miscellaneous.
-* [ls-uncons](#ls-uncons-list) `(list)`
 
 ------------------------------------------------------------
 
@@ -98,6 +99,16 @@ Examples:
 
     (-map 'string (ls-range from ?A to ?K))
     ;; ("A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K")
+
+------------------------------------------------------------
+
+### List access.
+
+#### ls-uncons `(list)`
+Decompose LIST into `car` and `cdr`. If LIST is `nil`, return `nil`.
+
+#### ls-last `(list)`
+Return the last element of LIST.
 
 ------------------------------------------------------------
 
@@ -168,13 +179,6 @@ Return `t` if OBJECT is an improper list.
 
 #### ls-sublist? `(sub list)`
 Return `t` if SUB is a contiguous sublist of LIST.
-
-------------------------------------------------------------
-
-### Miscellaneous.
-
-#### ls-uncons `(list)`
-Decompose LIST into `car` and `cdr`. If LIST is `nil`, return `nil`.
 
 ## TODO
 
