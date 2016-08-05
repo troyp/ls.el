@@ -21,6 +21,10 @@ Place `ls.el` in any directory on your `load-path` and:
 
 ## API
 
+Note: initial and final sublists (those which form a contiguous sublist
+including the first or last element) are referred to as __prefixes__ and
+__suffixes__, repectively, in this API.
+
 ### List creation: ranges, list comprehensions, etc.
 * [ls-range](#ls-range-rest-clauses) `(&rest clauses)`
 
