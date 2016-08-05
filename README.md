@@ -1,4 +1,4 @@
-ls.el -- List functions and macros for Emacs Lisp.
+ls.el -- List utilities for Emacs Lisp.
 -----
 
 Provides a set of utilities for list processing in Emacs Lisp. Sister library
