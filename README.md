@@ -131,13 +131,13 @@ Create a new cons if CAR is non-nil, else return CDR.
 ### ls-zero-when `(pred list)`
 Replace items where PRED yields t by zero in LIST.
 
-    (ls-zero-when (fn (zerop (mod _ 3))) (ls-range from 1 to 10))
-    ;; (nil nil 3 nil nil 6 nil nil 9 nil)"
+    (ls-zero-when (fn (zerop (mod <> 3))) (ls-range from 1 to 10))
+    ;; (nil nil 3 nil nil 6 nil nil 9 nil)
 
 ### ls-zero-unless `(pred list)`
 Replace items where PRED yields nil by zero in LIST.
 
-    (ls-zero-unless (fn (zerop (mod _ 3))) (ls-range from 1 to 10))
+    (ls-zero-unless (fn (zerop (mod <> 3))) (ls-range from 1 to 10))
     ;; (1 2 nil 4 5 nil 7 8 nil 10)
 
 ------------------------------------------------------------
@@ -197,7 +197,7 @@ Return `t` if SUB is a contiguous sublist of LIST.
 ## TODO
 
 * `ls-range`:
-    * Allow final `collect` clause (over-riding default of `collect _`). This
+    * Allow final `collect` clause (over-riding default of `collect i`). This
     permits `map` functionality, completing list comprehension syntax.
     * Allow initial `for` clause permitting __(a)__ custom iteration variable
     names; and __(b)__ destructuring.
