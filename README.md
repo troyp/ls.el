@@ -46,11 +46,11 @@ __suffixes__, repectively, in this API.
 * [ls-drop-until](#ls-drop-until-pred-list) `(pred list)`
 
 ### Predicates.
-* [ls-proper?](#ls-proper?-list) `(list)`
-* [ls-improper?](#ls-improper?-list) `(list)`
-* [ls-proper-list?](#ls-proper-list?-object) `(object)`
-* [ls-improper-list?](#ls-improper-list?-object) `(object)`
-* [ls-sublist?](#ls-sublist?-sub-list) `(sub list)`
+* [ls-proper?](#ls-proper-list) `(list)`
+* [ls-improper?](#ls-improper-list) `(list)`
+* [ls-proper-list?](#ls-proper-list-object) `(object)`
+* [ls-improper-list?](#ls-improper-list-object) `(object)`
+* [ls-sublist?](#ls-sublist-sub-list) `(sub list)`
 
 ------------------------------------------------------------
 
