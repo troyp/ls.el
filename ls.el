@@ -127,7 +127,7 @@ Examples:
 
 Example:
 
-  (ls-zero-when (fn (zerop (mod _ 3))) (ls-range from 1 to 10))
+  (ls-zero-when (fn (zerop (mod <> 3))) (ls-range from 1 to 10))
   ;; (nil nil 3 nil nil 6 nil nil 9 nil)"
   (--map (when (funcall pred it) it) list))
 
@@ -136,7 +136,7 @@ Example:
 
 Example:
 
-  (ls-zero-unless (fn (zerop (mod _ 3))) (ls-range from 1 to 10))
+  (ls-zero-unless (fn (zerop (mod <> 3))) (ls-range from 1 to 10))
   ;; (1 2 nil 4 5 nil 7 8 nil 10)"
   (--map (unless (funcall pred it) it) list))
 
