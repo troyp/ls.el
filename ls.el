@@ -4,7 +4,7 @@
 
 ;; Author: Troy Pracy
 ;; Keywords: list functional
-;; Version: 0.0.4
+;; Version: 0.0.5
 ;; Package-Requires: ((emacs "24") (dash "2.12.1") (dash-functional "1.2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -147,11 +147,11 @@ Example:
 ;; | Sublists |
 ;; '----------'
 
-(defun ls-take-before-elt (target list)
+(defun ls-take-before (target list)
   "Return the prefix ending immediately before TARGET of LIST."
   (--take-while (not (eql it target)) list))
 
-(defun ls-take-to-elt (target list)
+(defun ls-take-to (target list)
   "Return the prefix ending with TARGET of LIST."
   (let ((found nil))
     (-take-while
@@ -161,12 +161,17 @@ Example:
              (t                t)))
      list)))
 
-(defalias 'ls-drop-before-elt 'memql
+(defalias 'ls-drop-before 'memql
   "Return the suffix beginning with TARGET of LIST.")
 
-(defun ls-drop-to-elt (target list)
+(defun ls-drop-to (target list)
   "Return the suffix starting immediately after TARGET of LIST."
   (cdr (memql target list)))
+
+(defalias 'ls-take-to-elt 'ls-take-to)
+(defalias 'ls-drop-to-elt 'ls-drop-to)
+(defalias 'ls-take-before-elt 'ls-take-before)
+(defalias 'ls-drop-before-elt 'ls-drop-before)
 
 (defun ls-take-until (pred list)
   "Return a prefix of items failing PRED from LIST.

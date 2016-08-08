@@ -38,10 +38,10 @@ __suffixes__, repectively, in this API.
 * [ls-zero-unless](#ls-zero-unless-pred-list) `(pred list)`
 
 ### Sublists.
-* [ls-take-before-elt](#ls-take-before-elt-target-list) `(target-list)`
-* [ls-take-to-elt](#ls-take-to-elt-target-list) `(target list)`
-* [ls-drop-before-elt](#ls-drop-before-elt-target-list) `(target list)`
-* [ls-drop-to-elt](#ls-drop-to-elt-target-list) `(target list)`
+* [ls-take-before](#ls-take-before-target-list) `(target-list)`
+* [ls-take-to](#ls-take-to-target-list) `(target list)`
+* [ls-drop-before](#ls-drop-before-target-list) `(target list)`
+* [ls-drop-to](#ls-drop-to-target-list) `(target list)`
 * [ls-take-until](#ls-take-until-pred-list) `(pred list)`
 * [ls-drop-until](#ls-drop-until-pred-list) `(pred list)`
 
@@ -144,17 +144,21 @@ Replace items where PRED yields nil by zero in LIST.
 
 ### Sublists.
 
-#### ls-take-before-elt `(target list)`
-Return the sublist ending immediately before TARGET of LIST.
+#### ls-take-before `(target list)`
+Return the sublist ending immediately before TARGET of LIST.  
+(_deprecated alias:_ `ls-take-before-elt`)
 
-#### ls-take-to-elt `(target list)`
-Return the sublist ending with TARGET of LIST.
+#### ls-take-to `(target list)`
+Return the sublist ending with TARGET of LIST.  
+(_deprecated alias:_ `ls-take-to-elt`)
 
-#### ls-drop-before-elt `(target list)`
-Return the sublist beginning with TARGET of LIST (alias for `memql`).
+#### ls-drop-before `(target list)`
+Return the sublist beginning with TARGET of LIST (alias for `memql`).  
+(_deprecated alias:_ `ls-drop-before-elt`)
 
-#### ls-drop-to-elt `(target list)`
-Return the sublist starting immediately after TARGET of LIST.
+#### ls-drop-to `(target list)`
+Return the sublist starting immediately after TARGET of LIST.  
+(_deprecated alias:_ `ls-drop-to-elt`)
 
 ### ls-take-until `(pred list)`
 Return the prefix starting with the first argument for which PRED fails.
