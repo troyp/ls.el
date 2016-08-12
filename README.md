@@ -26,6 +26,7 @@ including the first or last element) are referred to as __prefixes__ and
 __suffixes__, repectively, in this API.
 
 ### List creation: ranges, list comprehensions, etc.
+* [ls-seq](#ls-seq-from-optional-to-inc) `(from &optional to inc)`
 * [ls-range](#ls-range-rest-clauses) `(&rest clauses)`
 
 ### List access.
@@ -55,6 +56,10 @@ __suffixes__, repectively, in this API.
 ------------------------------------------------------------
 
 ### List creation: ranges, list comprehensions, etc.
+
+#### ls-seq `(from &optional to inc)`
+
+Alias for `number-sequence`.
 
 #### ls-range `(&rest clauses)`
 Return a range of numbers (or other values) as a list.

@@ -35,6 +35,10 @@
 ;; | List Creation |
 ;; '---------------'
 
+(defalias 'ls-seq 'number-sequence)
+
+
+
 (defmacro ls-range (&rest clauses)
   "Return a range of numbers (or other values) as a list.
 
