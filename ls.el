@@ -249,4 +249,4 @@ See `ls-improper?'."
 
 (provide 'ls)
 
-;;; ls ends here
+;;; ls.el ends here
