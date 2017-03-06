@@ -109,6 +109,68 @@
                     list))
     )
 
+  (ert-deftest test-ls-partition-by-indices ()
+    "Test `ls-partition-by-indices'."
+    (should-equal
+     (ls-partition-by-indices nil '(0 1 2))
+     :result
+     '((0 1 2)))
+    (should-equal
+     (ls-partition-by-indices '(1) '(0 1 2))
+     :result
+     '((0) (1 2)))
+    ;; out-of-order indices
+    (should-equal
+     (ls-partition-by-indices '(5 8 3) (ls-seq 0 9))
+     :result
+     '((0 1 2) (3 4) (5 6 7) (8 9))
+     )
+    ;; zero index is ignored
+    (should-equal
+     (ls-partition-by-indices '(0) '(0 1 2))
+     :result
+     '((0 1 2)))
+    ;; indices out of range are ignored
+    (should-equal
+     (ls-partition-by-indices '(1 100 200) '(0 1 2))
+     :result
+     '((0) (1 2)))
+    ;; indices out of range are ignored
+    (should-equal
+     (ls-partition-by-indices '(1 -1) '(0 1 2))
+     :result
+     '((0) (1 2))
+     )
+    )
+  (ert-deftest test-ls-partition-by-indices/repeated-application ()
+    "Test repeated applications of `ls-partition-by-indices'.
+May result from binding (let ((parts '(nil)) ...) rather than
+(let ((parts (list nil)) ...))."
+    (should-equal
+     (ls-partition-by-indices '(1 2 3) '(0 1 2))
+     :result
+     '((0) (1) (2)))
+    (should-equal
+     (ls-partition-by-indices '(1 2 3) '(0 1 2))
+     :result
+     '((0) (1) (2)))
+    )
+
+(ert-deftest test-ls-reverse-sublist ()
+  "Test `ls-reverse-sublist'."
+  (should-equal
+   (ls-reverse-sublist 3 8 (ls-seq 0 9))
+   :result
+   '(0 1 2 7 6 5 4 3 8 9)
+   )
+   ;;
+  (should-equal
+   (ls-reverse-sublist 0 10 (ls-seq 0 9))
+   :result
+   '(9 8 7 6 5 4 3 2 1 0)
+   )
+  )
+
   )
 
 (defun ls---test-all ()

@@ -144,6 +144,15 @@ Example:
   ;; (1 2 nil 4 5 nil 7 8 nil 10)"
   (--map (unless (funcall pred it) it) list))
 
+(defun ls-reverse-sublist (start end list)
+  "Return a copy of LIST with sublist [START, end) reversed."
+  (let* ((parts (cond
+                 ((= start 0) (list nil (-take end list) (-drop end list)))
+                 (t (ls-partition-by-indices (list start end) list))))
+         (prefix  (car parts))
+         (sublist (cadr parts))
+         (suffix  (caddr parts)))
+    (-concat prefix (reverse sublist) suffix)))
 
 
 
@@ -190,6 +199,32 @@ Example:
 Note that `ls-take-until' and `ls-drop-until' partition a list into two parts.
 \(the prefix before PRED first holds, and the rest)."
   (-drop-while (-not pred) list))
+
+(defun ls-partition-by-indices (indices list)
+  "Return a list of sublists partitioning LIST at INDICES.
+
+INDICES may be in any order and should be in the range 0 < i < N.
+Out-of-range indices are ignored.
+
+Example:
+  (ls-partition-by-indices '(1 3) (ls-seq 0 9))
+  ;; ((0) (1 2) (3 4 5 6 7 8 9)) "
+  (let ((indices (-filter (lambda (x)
+                            (and (> x 0)
+                                 (< x (length list))))
+                          indices))
+        (parts (list nil) )
+        (rest  list))
+    (dotimes (i (length list))
+      ;; (cl-prettyprint (list i parts rest))
+      (when (member i indices)
+        (push nil parts))
+      ;; (cl-prettyprint (list i parts rest))
+      (push (car rest) (car parts))
+      ;; (cl-prettyprint (list i parts rest))
+      (setf rest (cdr rest)))
+    ;; (insert "\n\n")
+    (reverse (mapcar #'reverse parts))))
 
 
 

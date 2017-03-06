@@ -37,6 +37,7 @@ __suffixes__, repectively, in this API.
 * [ls-cons-if-t](#ls-cons-if-t-car-cdr) `(car cdr)`
 * [ls-zero-when](#ls-zero-when-pred-list) `(pred list)`
 * [ls-zero-unless](#ls-zero-unless-pred-list) `(pred list)`
+* [ls-reverse-sublist](#ls-reverse-sublist-start-end-list) `(start end list)`
 
 ### Sublists.
 * [ls-take-before](#ls-take-before-target-list) `(target-list)`
@@ -45,6 +46,7 @@ __suffixes__, repectively, in this API.
 * [ls-drop-to](#ls-drop-to-target-list) `(target list)`
 * [ls-take-until](#ls-take-until-pred-list) `(pred list)`
 * [ls-drop-until](#ls-drop-until-pred-list) `(pred list)`
+* [ls-partition-by-indices](#ls-partition-by-indices-indices-list) `(indices list)`
 
 ### Predicates.
 * [ls-proper?](#ls-proper-list) `(list)`
@@ -145,6 +147,12 @@ Replace items where PRED yields nil by zero in LIST.
     (ls-zero-unless (fn (zerop (mod <> 3))) (ls-range from 1 to 10))
     ;; (1 2 nil 4 5 nil 7 8 nil 10)
 
+### ls-reverse-sublist `(start end list)`
+Return a copy of LIST with sublist [START, end) reversed.
+
+    (ls-reverse-sublist 3 7 (ls-seq 1 10))
+    ;; (1 2 6 5 4 3 7 8 9 10)
+
 ------------------------------------------------------------
 
 ### Sublists.
@@ -173,6 +181,15 @@ Return the suffix starting with the first argument for which PRED fails.
 
 Note that `ls-take-until` and `ls-drop-until` partition a list into two parts
 (the prefix before PRED first holds, and the rest).
+
+### ls-partition-by-indices `(indices list)`
+Return a list of sublists partitioning LIST at INDICES.
+
+INDICES may be in any order and should be in the range 0 < i < N.
+Out-of-range indices are ignored.
+
+    (ls-partition-by-indices '(1 3) (ls-seq 0 9))
+    ;; ((0) (1 2) (3 4 5 6 7 8 9))
 
 ------------------------------------------------------------
 
